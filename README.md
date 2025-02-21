@@ -6,7 +6,7 @@ __Personal URL Shortener__
 It's nice to have URLs that are easy to pass around on social media and via
 email. People are growing ever more distrustful of populate services like
 bit.ly, goo.gl, and tinyurl. So, I'm creating this to have a privacy-respecting
-alternative. 
+alternative.
 
 
 
@@ -14,6 +14,9 @@ alternative.
 
 The current version is 0.0.0. This project uses [semantic versioning](http://semver.org).
 
+## Contents
+
+* [Feature Road Map](docs/Road-Map.md)
 
 ## Features
 
