@@ -30,13 +30,48 @@
 
         --white: #ffffff;
         --black: #2a2a2a;
+
+        /* Font Legend */
+        --sans-font: "Inter Display";
+        --serif-font: "Produkt";
+        --fixed-font: "Noto Sans Mono";
+
     }
 
     body {
         background-color: var(--cream);
         color: var(--black);
-        font-face: "Inter Display", sans-serif;
+        font-family: var(--sans-font), sans-serif;
     }
+
+    h1, h2, h3 {
+        margin-top: 0;
+        margin-bottom: var(--margin-medium);
+        font-family: var(--serif-font), serif;
+    }
+
+    form {
+        border: 1px solid var(--navy);
+        padding: var(--padding-medium);
+
+    }
+
+    label {
+        display: block;
+        margin-top: var(--margin-medium);
+    }
+
+    input, textarea {
+        width: 10em;
+        padding: var(--padding-small);
+        font-size: 1em;
+        font-family: var(--fixed-font), serif;
+    }
+
+    .wide {
+        width: 30em;
+    }
+
     </style>
     <!-- Scripts -->
     <script src="/js/script.js"></script>
@@ -50,6 +85,29 @@
         <p>
            This is a paragraph of text. There are many like it but this one is mine.
         </p>
+
+        <form action="">
+            <h2>Shorten</h2>
+            <div>
+                <label for="url-long">Long URL</label>
+                <input id="url-long" class="wide" type="url" placeholder="http://example.com/really/long/url" required />
+            </div>
+            <div>
+                <label for="url-alias">Alias</label>
+                <input id="url-alias" type="text" maxlength="16" placeholder="" />
+            </div>
+            <div>
+                <label for="url-title">Title</label>
+                <input id="url-title" class="wide" type="text" maxlength="16" />
+            </div>
+            <div>
+                <label for="url-description">Description</label>
+                <textarea id="url-description" class="wide"></textarea>
+            </div>
+            <div class="buttons">
+                <input type="submit" id="submit-button">
+            </div>
+        </form>
     </div>
 </div>
 <script src="/js/script.js"></script>
