@@ -1,120 +1,44 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
+@extends('layouts.main')
 
-    <title>Push | A Personal URL Shortener</title>
-    <meta name="description" content="A Personal, Self-hosted URL Shortener for
-    people who want more control over the tools they use">
-    <meta name="author" content="Andrew Woods">
+@section('title', 'PUSH URL SHORTENER')
 
-    <!-- Styles -->
-    <style>
-    :root {
-        /* Whitespace Settings */
-        --padding-small: 0.5em;
-        --padding-medium: 1em;
-        --padding-large: 1.5em;
+@section(
+    'description',
+    'A Personal, Self-hosted URL Shortener for people craving control over their tools'
+    )
 
-        --margin-small: 0.5em;
-        --margin-medium: 1em;
-        --margin-large: 1.5em;
+@section('content')
+<h1>Push URL Shortener</h1>
 
-        /* Color Legend */
-        --navy: #003049;
-        --red: #d62828;
-        --orange: #f77f00;
-        --yellow: #fcbf49;
-        --cream: #eae2b7;
+<p>
+   This is a paragraph of text. There are many like it but this one is mine.
+</p>
 
-        --white: #ffffff;
-        --black: #2a2a2a;
-
-        /* Font Legend */
-        --sans-font: "Inter Display";
-        --serif-font: "Produkt";
-        --fixed-font: "Noto Sans Mono";
-
-    }
-
-    body {
-        background-color: var(--cream);
-        color: var(--black);
-        font-family: var(--sans-font), sans-serif;
-    }
-
-    h1, h2, h3 {
-        margin-top: 0;
-        margin-bottom: var(--margin-medium);
-        font-family: var(--serif-font), serif;
-    }
-
-    form {
-        border: 1px solid var(--navy);
-        padding: var(--padding-medium);
-
-    }
-
-    label {
-        display: block;
-        margin-top: var(--margin-medium);
-    }
-
-    input, textarea {
-        width: 10em;
-        padding: var(--padding-small);
-        font-size: 1em;
-        font-family: var(--fixed-font), serif;
-    }
-
-    .wide {
-        width: 30em;
-    }
-
-    </style>
-    <!-- Scripts -->
-    <script src="/js/script.js"></script>
-
-</head>
-<body>
-<div id="page-wrapper">
-    <div id="page-content">
-        <h1>Push URL Shortener</h1>
-
-        <p>
-           This is a paragraph of text. There are many like it but this one is mine.
-        </p>
-
-        <form action="">
-            <h2>Shorten</h2>
-            <div>
-                <label for="url-long">Long URL</label>
-                <input id="url-long" class="wide" type="url" placeholder="http://example.com/really/long/url" required />
-            </div>
-            <div>
-                <label for="url-alias">Alias</label>
-                <input id="url-alias" type="text" maxlength="16" placeholder="" />
-            </div>
-            <div>
-                <label for="url-title">Title</label>
-                <input id="url-title" class="wide" type="text" maxlength="16" />
-            </div>
-            <div>
-                <label for="url-description">Description</label>
-                <textarea id="url-description" class="wide"></textarea>
-            </div>
-            <div class="buttons">
-                <input type="submit" id="submit-button">
-            </div>
-        </form>
+<form action="/url/create" method="post" id="shorten">
+    @csrf
+    <h2>Shorten</h2>
+    <div>
+        <label for="url-long">Long URL</label>
+        <input id="url-long" name="url_long" class="wide" type="url" placeholder="http://example.com/really/long/url" required />
     </div>
-</div>
-<script src="/js/script.js"></script>
-</body>
+    <div>
+        <label for="url-alias">Alias</label>
+        <input id="url-alias" name="url_alias" type="text" maxlength="16" />
+    </div>
+    <div>
+        <label for="url-title">Title</label>
+        <input id="url-title" name="url_title" class="wide" type="text" maxlength="70" />
+    </div>
+    <div>
+        <label for="url-description">Description</label>
+        <textarea id="url-description"
+            name="url_description"
+            maxlength="170"
+            class="wide"></textarea>
+    </div>
+    <div class="buttons">
+        <input type="submit" id="submit-button">
+    </div>
+</form>
+@endsection
 
-</html>
