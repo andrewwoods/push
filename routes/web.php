@@ -1,7 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UrlController;
 use App\Http\Controllers\MainController;
 
 Route::get('/', [MainController::class, 'home']);
+
+Route::post('/url/create', [UrlController::class, 'create']);
+
+Route::get('/url/{id}', [UrlController::class, 'show']);
 
