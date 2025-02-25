@@ -32,10 +32,8 @@ class UrlController extends Controller
      */
     public function show(string $id): View
     {
-        $url = url('user', [$id]);
         return view('url', [
             'url' => Url::find($id),
-            'value' => $url,
         ]);
     }
 }
