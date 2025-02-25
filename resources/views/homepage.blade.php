@@ -45,7 +45,10 @@
     <h2>Newest URLs</h2>
     <ul>
     @foreach ($newestUrls as $newestUrl)
-        <li><a href="">{{ $newestUrl->title }}</a></li>
+        <li>
+        <a href="{{url("/", $newestUrl->id)}}" target="_blank">{{ $newestUrl->title }}</a>
+        (<a href="{{url("/url", $newestUrl->id)}}">View</a>)
+        </li>
     @endforeach
     </ul>
 </div>
