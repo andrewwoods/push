@@ -40,5 +40,12 @@
         <input type="submit" id="submit-button">
     </div>
 </form>
+
+<h2>Newest URLs</h2>
+<ul>
+@foreach ($newestUrls as $newestUrl)
+    <li><a href="">{{ $newestUrl->title }}</a></li>
+@endforeach
+</ul>
 @endsection
 
