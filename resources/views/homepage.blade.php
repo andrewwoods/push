@@ -14,7 +14,7 @@
    This is a paragraph of text. There are many like it but this one is mine.
 </p>
 
-<form action="/url/create" method="post" id="shorten">
+<form action="/url/create" method="post" id="shorten" class="box-bordered">
     @csrf
     <h2>Shorten</h2>
     <div>
@@ -41,11 +41,13 @@
     </div>
 </form>
 
-<h2>Newest URLs</h2>
-<ul>
-@foreach ($newestUrls as $newestUrl)
-    <li><a href="">{{ $newestUrl->title }}</a></li>
-@endforeach
-</ul>
+<div class="box-bordered">
+    <h2>Newest URLs</h2>
+    <ul>
+    @foreach ($newestUrls as $newestUrl)
+        <li><a href="">{{ $newestUrl->title }}</a></li>
+    @endforeach
+    </ul>
+</div>
 @endsection
 

@@ -53,10 +53,9 @@
         font-family: var(--serif-font), serif;
     }
 
-    form {
+    .box-bordered {
         border: 1px solid var(--navy);
         padding: var(--padding-medium);
-
     }
 
     label {
