@@ -27,7 +27,15 @@
     </div>
     <div>
         <label for="url-title">Title</label>
-        <input id="url-title" name="url_title" class="wide" type="text" maxlength="70" />
+        <input id="url-title"
+            name="url_title"
+            class="wide countable"
+            aria-describedby="url-title-counter"
+            placeholder="Title for the Link"
+            type="text"
+            maxlength="70" />
+        <p class="counter screen-only" aria-hidden="true">Enter up to 70 characters</p>
+        <p class="counter sr-only" id="url-title-counter">Enter up to 70 characters</p>
     </div>
     <div>
         <label for="url-description">Description</label>
