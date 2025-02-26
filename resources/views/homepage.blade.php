@@ -41,8 +41,12 @@
         <label for="url-description">Description</label>
         <textarea id="url-description"
             name="url_description"
+            aria-describedby="url-description-counter"
+            placeholder="Description of the link"
             maxlength="170"
-            class="wide"></textarea>
+            class="wide countable"></textarea>
+        <p class="counter screen-only" aria-hidden="true">Enter up to 170 characters</p>
+        <p class="counter sr-only" id="url-description-counter">Enter up to 170 characters</p>
     </div>
     <div class="buttons">
         <input type="submit" id="submit-button">
