@@ -1,3 +1,4 @@
+@use('Illuminate\Support\Facades\Vite')
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
@@ -78,6 +79,8 @@
     <!-- Scripts -->
     <!-- <script src="/js/script.js"></script> -->
 
+    <!-- Vite -->
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body>
 <div id="page-wrapper">
