@@ -18,9 +18,9 @@ class UrlController extends Controller
         $url = new Url();
 
         $url->long_url = $request->url_long;
-        $url->title = $request->url_title;
-        $url->description = $request->url_description;
-        $url->alias = $request->url_alias;
+        $url->title = $request->url_title ?? '';
+        $url->description = $request->url_description ?? '';
+        $url->alias = $request->url_alias ?? '';
 
         $url->save();
 
