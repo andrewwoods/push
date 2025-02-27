@@ -61,7 +61,7 @@
         <p class="counter sr-only" id="url-description-counter">Enter up to 170 characters</p>
     </div>
     <div class="buttons">
-        <input type="submit" id="submit-button">
+        <input type="submit" id="submit-button" value="Save Url">
     </div>
 </form>
 
