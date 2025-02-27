@@ -19,7 +19,12 @@
     <h2>Shorten</h2>
     <div>
         <label for="url-long">Long URL</label>
-        <input id="url-long" name="url_long" class="wide" type="url" placeholder="http://example.com/really/long/url" required />
+        <input id="url-long"
+            name="url_long"
+            class="wide"
+            type="url"
+            placeholder="http://example.com/really/long/url"
+            required />
     </div>
     <div>
         <label for="url-alias">Alias</label>
