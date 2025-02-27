@@ -28,7 +28,14 @@
     </div>
     <div>
         <label for="url-alias">Alias</label>
-        <input id="url-alias" name="url_alias" type="text" maxlength="16" />
+        <input id="url-alias"
+            name="url_alias"
+            class="countable"
+            aria-describedby="url-alias-counter"
+            type="text"
+            maxlength="16" />
+        <p class="counter screen-only" aria-hidden="true">Enter up to 16 characters</p>
+        <p class="counter sr-only" id="url-alias-counter">Enter up to 16 characters</p>
     </div>
     <div>
         <label for="url-title">Title</label>
