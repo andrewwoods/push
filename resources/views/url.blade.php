@@ -1,12 +1,12 @@
 @extends('layouts.main')
 
-@section('title', 'Display single Short URL record')
+@section('title', 'View a Short URL')
 
-@section('title', 'Display all the details about a single URL record')
+@section('description', 'Display all the details about a single URL record')
 
 @section('content')
 <!-- url.blade.php -->
-<h1>View a URL</h1>
+<h1>View a Short URL</h1>
 
 <div>
     <h2><a href="{{ url('url', $url->id) }}"> {{ $url->title }}</a></h2>

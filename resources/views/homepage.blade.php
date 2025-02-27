@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', 'PUSH URL SHORTENER')
+@section('title', 'Push Homepage')
 
 @section(
     'description',

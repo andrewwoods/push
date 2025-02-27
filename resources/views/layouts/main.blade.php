@@ -9,7 +9,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
 
-    <title>@yield('title')  | A Personal URL Shortener</title>
+    <title>@yield('title', 'Shorten Your Long URLs')  | Push: A Personal URL Shortener</title>
     <meta name="description" content="@yield('description')">
     <meta name="author" content="Andrew Woods">
 
