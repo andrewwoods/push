@@ -17,6 +17,15 @@
 <form action="/url/create" method="post" id="shorten" class="box-bordered">
     @csrf
     <h2>Shorten</h2>
+    @if ($errors->any())
+        <div class="message-error">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
     <div>
         <label for="url-long">Long URL</label>
         <input id="url-long"
@@ -24,7 +33,7 @@
             class="wide"
             type="url"
             placeholder="http://example.com/really/long/url"
-            required />
+            />
     </div>
     <div>
         <label for="url-alias">Alias</label>

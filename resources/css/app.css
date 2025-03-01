@@ -71,3 +71,18 @@ input, textarea {
 .wide {
     width: 30em;
 }
+
+.message-error {
+    border: 2px solid red;
+    background-color: pink;
+    color: red;
+    font-weight: bold;
+    font-family: system-ui;
+
+    li {
+        margin: 0.5em;
+        list-style-type: none;
+    }
+
+}
+

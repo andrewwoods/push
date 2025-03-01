@@ -15,6 +15,13 @@ class UrlController extends Controller
      */
     public function create(Request $request): RedirectResponse
     {
+        $validated = $request->validate([
+            'url_long' => 'required|url:http,https',
+            'url_title' => 'required|max:70',
+            'url_description' => 'max:170',
+            'url_alias' => 'max:16',
+        ]);
+
         $url = new Url();
 
         $url->long_url = $request->url_long;
