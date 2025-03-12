@@ -14,7 +14,8 @@
    This is a paragraph of text. There are many like it but this one is mine.
 </p>
 
-<form action="/url/create" method="post" id="shorten" class="box-bordered">
+<div class="grid">
+<form action="/url/create" method="post" id="shortenForm" class="box-bordered">
     @csrf
     <h2>Shorten</h2>
     @if ($errors->any())
@@ -70,7 +71,7 @@
         <p class="counter sr-only" id="url-description-counter">Enter up to 170 characters</p>
     </div>
     <div class="buttons">
-        <input type="submit" id="submit-button" value="Save Url">
+        <input type="submit" class="button-submit" id="submit-button" value="Save Url">
     </div>
 </form>
 
@@ -84,6 +85,7 @@
         </li>
     @endforeach
     </ul>
+</div>
 </div>
 @endsection
 

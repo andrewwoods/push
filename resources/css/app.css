@@ -27,7 +27,7 @@
 
     /* Font Legend */
     --sans-font: "Inter Display";
-    --serif-font: "Produkt";
+    --serif-font: "Rockwell";
     --fixed-font: "Noto Sans Mono";
 
 }
@@ -39,6 +39,20 @@
     overflow: hidden;
     top: -9999em;
 }
+
+.button-submit {
+    background-color: var(--navy);
+    color: var(--white);
+    text-transform: uppercase;
+    font-family: var(--fixed-font), serif;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 50% 50%;
+
+}
+
 body {
     background-color: var(--cream);
     color: var(--black);
