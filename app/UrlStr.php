@@ -45,4 +45,13 @@ class UrlStr
             'utm_term',
         ];
     }
+
+    public function getWhitelist() {
+        return [
+            'lat',
+            'latitude',
+            'long',
+            'longitude',
+        ];
+    }
 }
