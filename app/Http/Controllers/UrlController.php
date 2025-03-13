@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Url;
+use App\UrlStr;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
@@ -41,6 +42,25 @@ class UrlController extends Controller
     {
         return view('url', [
             'url' => Url::find($id),
+        ]);
+    }
+
+    public function cleanForm(Request $request): View {
+        $cleanUrl = '';
+        return view('url-clean', [
+            'clean_url' => $cleanUrl,
+        ]);
+    }
+
+    public function clean(Request $request): View {
+        $urlLongData = parse_url($request->url_long);
+        $urlString = new UrlStr();
+
+        // @todo
+        $cleanUrl = $urlString->fromParseUrl($urlLongData);
+
+        return view('url-clean', [
+            'clean_url' => $cleanUrl,
         ]);
     }
 
