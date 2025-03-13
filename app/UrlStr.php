@@ -35,4 +35,14 @@ class UrlStr
 
         return $output;
     }
+
+    public function getBlacklist() {
+        return [
+            'utm_content',
+            'utm_medium',
+            'utm_source',
+            'utm_campaign',
+            'utm_term',
+        ];
+    }
 }
