@@ -33,6 +33,39 @@ class UrlStr
             $output .= $data['host'];
         }
 
+        if (isset($data['path'])) {
+            $output .= $data['path'];
+        }
+
+        if (isset($data['query'])) {
+            $query = [];
+            $params = [];
+
+            parse_str($data['query'], $query);
+            $blacklist = $this->getBlacklist();
+            $whitelist = $this->getWhitelist();
+            foreach ($query as $key => $value) {
+                // Skip over keys in the blacklist.
+                if (in_array($key, $blacklist)) {
+                    continue;
+                }
+
+                // Update keys in the whitelist.
+                if (in_array($key, $whitelist)) {
+                    $params[$key] = $value;
+                }
+
+                // @TODO: Let the user add their own processing here
+            }
+
+            $paramString = '';
+            if (http_build_query($params)) {
+                $paramString = '?' . http_build_query($params);
+            }
+
+            $output .= $paramString;
+        }
+
         return $output;
     }
 
