@@ -32,6 +32,11 @@
 
 }
 
+.screen-only {
+    margin-top: 0;
+    font-family: var(--fixed-font), monospace;
+}
+
 .sr-only {
     position: absolute;
     left: -9999em;
@@ -90,13 +95,25 @@ input, textarea {
     border: 2px solid red;
     background-color: pink;
     color: red;
-    font-weight: bold;
     font-family: system-ui;
 
     li {
         margin: 0.5em;
         list-style-type: none;
     }
+}
 
+.message-success {
+    border: 2px solid darkgreen;
+    background-color: #c7ebc7;
+    color: darkgreen;
+    font-family: system-ui;
+    padding: var(--padding-small);
+    margin: var(--margin-small) 0;
+
+    li {
+        margin: 0.5em;
+        list-style-type: none;
+    }
 }
 
