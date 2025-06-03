@@ -37,12 +37,32 @@ class UrlParser
             var_dump($parsed['path']);
             $this->path = $parsed['path'];
         }
+
+        if (isset($parsed['query'])) {
+            $query = [];
+            $params = [];
+
+            parse_str($parsed['query'], $query);
+            $blacklist = $this->getBlackList();
+            foreach ($query as $key => $value) {
+                // Skip over keys in the blacklist.
+                if (in_array($key, $blacklist)) {
+                    continue;
+                }
+
+                // @TODO: Let the user add their own processing here
+                $params[$key] = $value;
+            }
+
+            $this->query = $params;
+        }
     }
 
     public function __toString(): string
     {
         return $this->scheme . '://' . $this->host . $this->path  . $this->query;
     }
+
 
     public function getUtmParameters(): array
     {
@@ -53,5 +73,10 @@ class UrlParser
             'utm_campaign',
             'utm_term',
         ];
+    }
+
+    public function getBlackList(): array
+    {
+        return $this->getUtmParameters();
     }
 }

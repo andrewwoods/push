@@ -55,4 +55,15 @@ class UrlParserTest extends TestCase
         $this->assertTrue(in_array('utm_source', $result), 'utm_source is found');
         $this->assertTrue(in_array('utm_term', $result), 'utm_term is found');
     }
+
+    public function testGetUrlHasParameters()
+    {
+        $content = 'https://www.example.com/watch?v=IHW1bIW4UXw';
+
+        $parser = new UrlParser($content);
+
+        $this->assertEquals(1, count($parser->query));
+        $this->assertTrue(isset($parser->query['v']), 'the v parameter is found');
+        $this->assertEquals('IHW1bIW4UXw', $parser->query['v'], 'the v value matches');
+    }
 }
