@@ -56,6 +56,7 @@
     display: grid;
     grid-template-columns: 50% 50%;
 
+    }
 }
 
 body {
@@ -96,6 +97,23 @@ input, textarea {
     background-color: pink;
     color: red;
     font-family: system-ui;
+    padding: var(--padding-small);
+    margin: var(--margin-small) 0;
+
+    li {
+        margin: 0.5em;
+        list-style-type: none;
+    }
+}
+
+
+.message-warning {
+    border: 2px solid #eaa607;
+    background-color: #f0ebc0;
+    color: #eaa607;
+    font-family: system-ui;
+    padding: var(--padding-small);
+    margin: var(--margin-small) 0;
 
     li {
         margin: 0.5em;
