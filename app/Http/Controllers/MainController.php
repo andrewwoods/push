@@ -18,4 +18,10 @@ class MainController extends Controller
         ]);
     }
 
+    public function phpinfo(Request $request): void
+    {
+        if (env('APP_DEBUG')) {
+            phpinfo();
+        }
+    }
 }
