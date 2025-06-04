@@ -9,6 +9,22 @@
 
 @section('content')
 
+@if (isset($initial_url))
+    <div class="message-warning">
+        <h3>Your Initial URL </h3>
+        <pre>{{ $initial_url }}</pre>
+        @if ($debug)
+        <ul>
+        @foreach ($params as $name => $value)
+        <li>
+        <pre>{{ $name }} => {{ $value }} </pre>
+        </li>
+        @endforeach
+        </ul>
+        @endif
+    </div>
+@endif
+
 @if ($clean_url)
     <div class="message-success">
         <h3>Your Cleaned Link</h3>

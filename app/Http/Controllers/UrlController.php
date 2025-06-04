@@ -4,10 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\Url;
 use App\UrlStr;
+use App\UrlParser;
+use Illuminate\Database\RecordNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
+use UrlParser as UrlParserUrlParser;
+use stdClass;
 
 class UrlController extends Controller
 {
@@ -23,12 +27,14 @@ class UrlController extends Controller
             'url_alias' => 'max:16',
         ]);
 
-        $url = new Url();
+        $urlParser = new UrlParser($validated['url_long']);
+        $urlLong = $urlParser->str();
 
-        $url->long_url = $request->url_long;
-        $url->title = $request->url_title ?? '';
-        $url->description = $request->url_description ?? '';
-        $url->alias = $request->url_alias ?? '';
+        $url = new Url();
+        $url->long_url = $urlLong ?? '';
+        $url->title = $validated['url_title'] ?? '';
+        $url->description = $validated['url_description'] ?? '';
+        $url->alias = $validated['url_alias'] ?? '';
 
         $url->save();
 
@@ -40,27 +46,46 @@ class UrlController extends Controller
      */
     public function show(string $id): View
     {
-        return view('url', [
-            'url' => Url::find($id),
-        ]);
+        $url = new stdClass();
+        $url->id = $id;
+        $url->title = '';
+        $url->long_url = '';
+        $url->description = '';
+
+        try {
+            $url = Url::find($id);
+            return view('url', [
+                'url' => $url,
+            ]);
+        } catch (RecordNotFoundException $e) {
+            abort(404);
+        }
     }
 
-    public function cleanForm(Request $request): View {
+    public function cleanForm(Request $request): View
+    {
         $cleanUrl = '';
         return view('url-clean', [
             'clean_url' => $cleanUrl,
         ]);
     }
 
-    public function clean(Request $request): View {
-        $urlLongData = parse_url($request->url_long);
-        $urlString = new UrlStr();
+    public function clean(Request $request): View
+    {
+        $validated = $request->validate([
+            'url_long' => 'required|url:http,https',
+        ]);
+        $query_string = parse_url($validated['url_long'], PHP_URL_QUERY);
+        parse_str($query_string, $initial_params);
 
-        // @todo
-        $cleanUrl = $urlString->fromParseUrl($urlLongData);
+        $parser = new UrlParser($validated['url_long']);
+        $cleanUrl = $parser->str();
 
         return view('url-clean', [
+            'initial_url' => $validated['url_long'],
             'clean_url' => $cleanUrl,
+            'params' => $initial_params,
+            'debug' => env('APP_DEBUG'),
         ]);
     }
 
