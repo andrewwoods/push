@@ -24,4 +24,9 @@ class MainController extends Controller
             phpinfo();
         }
     }
+
+    public function token()
+    {
+        return csrf_token();
+    }
 }
